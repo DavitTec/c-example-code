@@ -100,7 +100,18 @@ bool parse_int(char *string, int *integer)
     // contain a valid integer
     if (!isdigit(string[i])) return false;
   }
-  
+    if (string[i] ==  '+')
+  {
+    // store the symbol into the buffer, and advance both indexes into the 
+    // string and buffer
+    integer_buffer[integer_chars] = '+';
+    integer_chars++;
+    i++;
+    
+    // if the + character is not followed by a digit, the string does not 
+    // contain a valid integer
+    if (!isdigit(string[i])) return false;
+  }
   // loop through characters until we reach the end of the string or a trailing
   // whitespace character
   while (i < length && !isspace(string[i]))
